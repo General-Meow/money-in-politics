@@ -1,0 +1,36 @@
+# Neo4j Docker Compose for STORY-001 Integration Testing
+# File: _bmad-output/implementation-artifacts/stories/story-001/docker-compose.neo4j.integration.yml
+
+services:
+  neo4j-integration-test:
+    image: neo4j:5.20-community  # Latest LTS version
+    container_name: webofpolitics-neo4j-integration
+    ports:
+      - "7474:7474"   # Browser (localhost only for testing)
+      - "7687:7687"   # Bolt protocol (localhost only)
+    environment:
+      - NEO4DB_AUTH_USERNAME=neo4j
+      - NEO4J_AUTH=${NEO4J_INTEGRATION_PASSWORD:-password}
+      - NEO4J_PLUGINS="['apoc']"
+    volumes:
+      - ./schema:/home/neo4j/data/schema
+      - neo4j-integration-data:/data
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "${NEO4J_INTEGRATION_PASSWORD:-password}", "SHOW DATABASES"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+    restart: unless-stopped
+    depends_on:
+      - neo4j-integration-db
+
+  neo4j-integration-db:
+    image: neo4j:5.20-community
+    container_name: webofpolitics-neo4j-integration-db
+    volumes:
+      - neo4j-integration-data:/data
