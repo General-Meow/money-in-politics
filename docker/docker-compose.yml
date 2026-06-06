@@ -1,0 +1,63 @@
+# EPIC-01 Foundation Integration Testing Environment
+# Neo4j requires strong passwords (8+ chars with uppercase, lowercase, numbers, special chars)
+
+version: '3.8'
+
+services:
+  # Neo4j - Graph Database (Primary storage)
+  neo4j:
+    image: neo4j:5.17-community
+    container_name: webofpolitics_neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/Web0fP0l1t1c\$Secur3
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+    ports:
+      - "7474:7474"  # HTTP Browser
+      - "7687:7687"  # Bolt Protocol
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - webofpolitics-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 -q http://localhost:7474 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # PostgreSQL - Relational database (for fallback/auxiliary storage)
+  postgresql:
+    image: postgres:16-alpine
+    container_name: webofpolitics_postgresql
+    environment:
+      - POSTGRES_USER=webofpolitics
+      - POSTGRES_PASSWORD=W3b0fP0l1t1c\$Secur3
+      - POSTGRES_DB=web_of_politics
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - webofpolitics-net
+
+  # Redis - Caching layer (for API responses)
+  redis:
+    image: redis:7-alpine
+    container_name: webofpolitics_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - webofpolitics-net
+
+networks:
+  webofpolitics-net:
+    driver: bridge
+
+volumes:
+  neo4j_data:
+  postgres_data:
+  redis_data:
+
+# Environment variables for strong password configuration:
+# NEO4J_AUTH=neo4j/Web0fP0l1t1c\$Secur3 (8+ chars with mixed case, numbers, special chars)
