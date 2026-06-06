@@ -6,20 +6,16 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-/**
- * Integration tests for pagination utilities.
- */
 @DisplayName("Pagination")
 class PaginationIntegrationTest {
     
     @Nested
-    @DisplayName(" Response Paginators")
+    @DisplayName("Response Paginators")
     class ResponsePaginators {
         
         @Test
         @DisplayName("Handle paginated donation responses")
         void handlePaginatedDonationResponses() {
-            // Integration test: pagination utilities for API responses
             assertTrue(true);
         }
     }

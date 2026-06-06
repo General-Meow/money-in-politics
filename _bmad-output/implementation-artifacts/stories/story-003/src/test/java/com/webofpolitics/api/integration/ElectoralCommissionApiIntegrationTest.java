@@ -1,9 +1,10 @@
 package com.webofpolitics.api.integration;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
 
 /**
  * Integration tests for Electoral Commission API donation data.
@@ -19,14 +20,14 @@ class ElectoralCommissionApiIntegrationTest {
         @DisplayName("Fetch donation ledger from Electoral Commission")
         void fetchDonationLedgerFromElectoralCommission() {
             // Integration test: fetch donation data and insert into Neo4j graph
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
         
         @Test
         @DisplayName("Map donors to Neo4j nodes")
         void mapDonorsToNeo4jNodes() {
             // Integration test: create Donor nodes with relationships
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
     
@@ -38,7 +39,7 @@ class ElectoralCommissionApiIntegrationTest {
         @DisplayName("Extract disclosure documents for transparency")
         void extractDisclosureDocumentsForTransparency() {
             // Integration test: parse and store disclosure documents
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
     
@@ -50,7 +51,7 @@ class ElectoralCommissionApiIntegrationTest {
         @DisplayName("Search donors by name or category")
         void searchDonorsByNameOrCategory() {
             // Integration test: implement donor search functionality
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
 }

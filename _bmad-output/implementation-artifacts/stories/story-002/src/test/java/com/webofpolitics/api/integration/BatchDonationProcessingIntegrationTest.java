@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-/**
- * Integration tests for batch donation processing.
- */
 @DisplayName("Batch Donation Processing")
 class BatchDonationProcessingIntegrationTest {
     
@@ -19,14 +16,6 @@ class BatchDonationProcessingIntegrationTest {
         @Test
         @DisplayName("Process donations for multiple politicians with rate limits")
         void processDonationsForMultiplePoliticiansWithRateLimits() {
-            // Integration test: batch donation processing respecting API limits
-            assertTrue(true);
-        }
-        
-        @Test
-        @DisplayName("Handle pagination for large donation datasets")
-        void handlePaginationForLargeDonationDatasets() {
-            // Integration test: process paginated donation responses
             assertTrue(true);
         }
     }

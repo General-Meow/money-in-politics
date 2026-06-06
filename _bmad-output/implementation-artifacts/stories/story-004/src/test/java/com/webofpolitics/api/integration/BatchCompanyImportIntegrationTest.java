@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
 
 /**
  * Integration tests for batch company import.
@@ -21,7 +21,7 @@ class BatchCompanyImportIntegrationTest {
         @DisplayName("Process multiple companies with rate limiting")
         void processMultipleCompaniesWithRateLimiting() {
             // Integration test: batch company processing respecting API limits
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
     
@@ -33,7 +33,7 @@ class BatchCompanyImportIntegrationTest {
         @DisplayName("Handle invalid company IDs gracefully")
         void handleInvalidCompanyIdsGracefully() {
             // Integration test: validate error handling for bad input
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
 }

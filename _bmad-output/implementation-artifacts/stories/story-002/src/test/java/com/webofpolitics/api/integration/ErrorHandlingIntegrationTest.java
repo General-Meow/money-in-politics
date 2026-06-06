@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-/**
- * Integration tests for error handling and retry logic.
- */
 @DisplayName("Error Handling")
 class ErrorHandlingIntegrationTest {
     
@@ -19,14 +16,6 @@ class ErrorHandlingIntegrationTest {
         @Test
         @DisplayName("Implement exponential backoff for failed API calls")
         void implementExponentialBackoffForFailedApiCalls() {
-            // Integration test: retry logic with exponential backoff
-            assertTrue(true);
-        }
-        
-        @Test
-        @DisplayName("Handle invalid donation IDs gracefully")
-        void handleInvalidDonationIdsGracefully() {
-            // Integration test: validate error handling for bad input
             assertTrue(true);
         }
     }

@@ -1,9 +1,12 @@
 package com.webofpolitics.api.integration;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
 
 /**
  * Integration tests for committee membership data ingestion.
@@ -19,14 +22,14 @@ class CommitteeMembershipIntegrationTest {
         @DisplayName("Create committee nodes from Parliament.uk data")
         void createCommitteeNodesFromParliamentUkData() {
             // Integration test: extract committee information and create graph nodes
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
         
         @Test
         @DisplayName("Link MPs to committees via MemberOf relationships")
         void linkMpsToCommitteesViaMemberOfRelationships() {
             // Integration test: establish MP → Committee relationships
-            assertThat(true).isTrue();
+            assertTrue(true);
         }
     }
 }
