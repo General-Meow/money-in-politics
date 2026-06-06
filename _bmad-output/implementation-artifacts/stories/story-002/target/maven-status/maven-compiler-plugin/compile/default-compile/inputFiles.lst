@@ -1,0 +1,15 @@
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/PoliticianDataExtractor.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/BiographyText.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/Configuration.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/HttpClients.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/PoliticianData.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentDivision.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/OAuthService.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentApiClientV3.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/CommitteeMemberships.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentApiErrorHandling.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentApiResponsePaginator.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/VotingRecords.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentApiImporter.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/PoliticianBatchImporter.java
+/home/paul/dev/projects/money-in-politics/_bmad-output/implementation-artifacts/stories/story-002/src/main/java/com/webofpolitics/api/ParliamentApiClient.java

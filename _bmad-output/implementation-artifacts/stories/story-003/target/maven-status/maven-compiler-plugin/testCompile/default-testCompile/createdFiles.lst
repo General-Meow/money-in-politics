@@ -1,0 +1,13 @@
+com/webofpolitics/api/BatchDonationImporterTest.class
+com/webofpolitics/api/ElectoralCommissionErrorHandlingTest$TimeoutHandling.class
+com/webofpolitics/api/ElectoralCommissionApiClientTest$ConstituencySupportFetching.class
+com/webofpolitics/api/BatchDonationImporterTest$PaginationLogic.class
+com/webofpolitics/api/DonationDataExtractorTest$DonationRecordExtraction.class
+com/webofpolitics/api/ElectoralCommissionApiClientTest.class
+com/webofpolitics/api/BatchDonationImporterTest$BatchProcessing.class
+com/webofpolitics/api/DonationDataExtractorTest.class
+com/webofpolitics/api/ElectoralCommissionErrorHandlingTest.class
+com/webofpolitics/api/DonationDataExtractorTest$DisclosureDocumentExtraction.class
+com/webofpolitics/api/ElectoralCommissionApiClientTest$DonorProfileFetching.class
+com/webofpolitics/api/ElectoralCommissionApiClientTest$DonationLedgerFetching.class
+com/webofpolitics/api/ElectoralCommissionErrorHandlingTest$ErrorHandling.class

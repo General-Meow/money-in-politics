@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.webofpolitics.schema.integration.IndexCreationIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.025 s -- in com.webofpolitics.schema.integration.IndexCreationIntegrationTest

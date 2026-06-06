@@ -1,5 +1,6 @@
 package com.webofpolitics.api;
 
+import java.util.List;
 import org.springframework.stereotype.Component;
 import java.time.Duration;
 
