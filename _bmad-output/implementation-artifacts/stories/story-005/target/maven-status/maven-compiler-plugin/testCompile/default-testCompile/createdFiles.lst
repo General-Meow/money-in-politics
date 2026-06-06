@@ -1,0 +1,6 @@
+com/webofpolitics/api/WebScraperTest$PoliticianDataScraping.class
+com/webofpolitics/api/WebScraperTest$DonationDataScraping.class
+com/webofpolitics/api/HtmlParserTest$FieldExtraction.class
+com/webofpolitics/api/WebScraperTest.class
+com/webofpolitics/api/HtmlParserTest$SchemaMapping.class
+com/webofpolitics/api/HtmlParserTest.class

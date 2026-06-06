@@ -1,0 +1,4 @@
+com/webofpolitics/api/DonationRecord.class
+com/webofpolitics/api/PoliticianProfile.class
+com/webofpolitics/api/WebScraper.class
+com/webofpolitics/api/HtmlParser.class
