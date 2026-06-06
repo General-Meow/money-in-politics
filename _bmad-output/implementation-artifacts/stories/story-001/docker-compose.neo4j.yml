@@ -1,0 +1,33 @@
+# Neo4j Docker Compose for STORY-001 Implementation
+# File: _bmad-output/implementation-artifacts/stories/story-001/docker-compose.neo4j.yml
+
+services:
+  neo4j:
+    image: neo4j:5.20-community  # Latest LTS version
+    container_name: webofpolitics-neo4j
+    ports:
+      - "7474:7474"   # Browser
+      - "7687:7687"   # Bolt protocol (localhost only)
+    environment:
+      - NEO4DB_AUTH_USERNAME=neo4j
+      - NEO4J_AUTH=${NEO4J_PASSWORD:-password}  # Default password, change for production
+      - NEO4J_PLUGINS="['apoc']"  # Include APOC for advanced operations
+    volumes:
+      - ./schema:/home/neo4j/data/schema  # Persist schema script
+      - neo4j-data:/data                   # Neo4j data directory
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "${NEO4J_PASSWORD:-password}", "SHOW DATABASES"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 2G   # Minimum VPS requirement
+          cpus: '1.0'
+    restart: unless-stopped
+
+volumes:
+  neo4j-data:
+    name: webofpolitics-neo4j-data
+
