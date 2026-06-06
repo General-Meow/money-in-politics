@@ -1,0 +1,76 @@
+{
+  "politicians": [
+    {
+      "mpId": "AndrewSmith",
+      "fullName": "Andrew Smith MP",
+      "nameOfMember": "Andrew Smith",
+      "constituencyName": "Manchester Central",
+      "partyOfMember": "Conservative Party",
+      "dateOfBirth": "1972-05-15",
+      "isIndependent": false,
+      "email": "andrew.smith.mp@parliament.uk",
+      "whip": true,
+      "biographyText": {
+        "text": "Andrew Smith has been the MP for Manchester Central since 2017. He previously served as Chief Secretary to the Treasury and Minister of State for Health."
+      }
+    },
+    {
+      "mpId": "SarahJones",
+      "fullName": "Sarah Jones MP",
+      "nameOfMember": "Sarah Jones",
+      "constituencyName": "Leeds North East",
+      "partyOfMember": "Labour Party",
+      "dateOfBirth": "1968-03-22",
+      "isIndependent": false,
+      "email": "sarah.jones.mp@parliament.uk",
+      "whip": true,
+      "biographyText": {
+        "text": "Sarah Jones has been the MP for Leeds North East since 2019. She previously served as Pensions Minister and Member of Parliament for Bradford South."
+      }
+    },
+    {
+      "mpId": "JohnWilliams",
+      "fullName": "John Williams MP",
+      "nameOfMember": "John Williams",
+      "constituencyName": "Cardiff Central",
+      "partyOfMember": "Labour Party",
+      "dateOfBirth": "1975-08-30",
+      "isIndependent": false,
+      "email": "john.williams.mp@parliament.uk",
+      "whip": true,
+      "biographyText": {
+        "text": "John Williams has been the MP for Cardiff Central since 2019. He previously served as Chair of the Welsh Affairs Committee and Minister for Government Reform."
+      }
+    }
+  ],
+  "votingRecords": [
+    {
+      "divisionId": "div-2024-001",
+      "date": "2024-01-15T18:00:00Z",
+      "motionTitle": "Trade and Investment Bill (Second Reading)",
+      "longTitle": "Trade and Investment Bill [Bill]",
+      "aye": true,
+      "noes": false
+    },
+    {
+      "divisionId": "div-2024-002",
+      "date": "2024-01-18T19:30:00Z",
+      "motionTitle": "Health and Social Care Bill (Second Reading)",
+      "longTitle": "Health and Social Care Bill [Bill]",
+      "aye": false,
+      "noes": true
+    }
+  ],
+  "committees": [
+    {
+      "divisionId": "div-committee-001",
+      "title": "Health Committee",
+      "longTitle": "Health and Social Care Committee"
+    },
+    {
+      "divisionId": "div-committee-002",
+      "title": "Education Select Committee",
+      "longTitle": "Select Committee on Education, Equality, Demography and Skills"
+    }
+  ]
+}

@@ -1,62 +1,48 @@
 package com.webofpolitics.api;
 
 import org.springframework.stereotype.Component;
-import java.util.List;
+import org.neo4j.driver.*;
 
 /**
- * Parliament.uk API client for fetching politician data.
+ * Client for fetching MP data from Parliament.uk API.
  */
 @Component
 public class ParliamentApiClient {
     
-    // TODO: Implement HTTP client initialization
-    // TODO: Add OAuth/OIDC authentication configuration
+    private final Session session;
+    public ParliamentApiClient(DriverConfig config, Driver driver) {
+        this.session = driver.session(config);
+    }
     
     /**
-     * Fetch a politician profile by ID from Parliament.uk API.
+     * Fetch politician profile from Parliament.uk (https://api.parliament.uk/women-and-people/the-houses/people).
      */
-    public PoliticianData fetchPoliticianProfile(String idPoliticianId) {
-        // TODO: Implement HTTP GET request to Parliament API
+    public PoliticianProfile fetchPoliticianProfile(String mpId) {
+        // TODO: Fetch from Parliament.uk API
         throw new UnsupportedOperationException("STORY-002: Not yet implemented");
     }
     
     /**
-     * Search for MP by constituency name.
+     * Get voting records for an MP.
      */
-    public List<PoliticianData> searchMpByConstituency(String constituencyName) {
-        // TODO: Implement search API call
+    public VotingRecords getVotingRecords(String mpId, java.time.LocalDate from) {
+        // TODO: Fetch voting data
         throw new UnsupportedOperationException("STORY-002: Not yet implemented");
     }
     
     /**
-     * Fetch voting records for a politician.
+     * Get committee memberships for an MP.
      */
-    public VotingRecords fetchVotingRecords(String idPoliticianId) {
-        // TODO: Implement voting records API call
+    public CommitteeMemberships getCommitteeMemberships(String mpId) {
+        // TODO: Fetch committee data
         throw new UnsupportedOperationException("STORY-002: Not yet implemented");
     }
     
     /**
-     * Fetch biography text for a politician.
+     * Fetch biography text from Parliament.uk.
      */
-    public BiographyText fetchBiography(String idPoliticianId) {
-        // TODO: Implement biography API call
-        throw new UnsupportedOperationException("STORY-002: Not yet implemented");
-    }
-    
-    /**
-     * Fetch committee memberships for a politician.
-     */
-    public CommitteeMemberships fetchCommitteeMemberships(String idPoliticianId) {
-        // TODO: Implement committee API call
-        throw new UnsupportedOperationException("STORY-002: Not yet implemented");
-    }
-    
-    /**
-     * Search politicians by name pattern.
-     */
-    public List<PoliticianData> searchByName(String namePattern) {
-        // TODO: Implement name search API call
+    public BiographyText fetchBiography(String mpId) {
+        // TODO: Fetch biography
         throw new UnsupportedOperationException("STORY-002: Not yet implemented");
     }
 }
