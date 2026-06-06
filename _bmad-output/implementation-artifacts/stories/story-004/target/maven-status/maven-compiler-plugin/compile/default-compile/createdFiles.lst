@@ -1,0 +1,7 @@
+com/webofpolitics/api/PoliticianData.class
+com/webofpolitics/api/CompanyBatchImporter.class
+com/webofpolitics/api/Address.class
+com/webofpolitics/api/CompaniesHouseApiClient.class
+com/webofpolitics/api/CompanyErrorHandling.class
+com/webofpolitics/api/CompanyProfile.class
+com/webofpolitics/api/DonorCompanyMatcher.class

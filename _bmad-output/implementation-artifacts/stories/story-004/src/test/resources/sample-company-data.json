@@ -1,0 +1,28 @@
+{
+  "companies": [
+    {
+      "companyNumber": "12345678",
+      "companyName": "John Smith Ltd",
+      "incorporatedOn": "2020-01-15",
+      "sicCodes": [70220],
+      "addressLine1": "123 Business Park"
+    },
+    {
+      "companyNumber": "87654321",
+      "companyName": "Manchester Tech Solutions Ltd",
+      "incorporatedOn": "2019-06-20",
+      "sicCodes": [62012, 62020],
+      "addressLine1": "45 Innovation Way"
+    }
+  ],
+  "donationRecipients": [
+    {
+      "companyNumber": "12345678",
+      "name": "John Smith Ltd"
+    },
+    {
+      "companyNumber": "87654321",
+      "name": "Manchester Tech Solutions Ltd"
+    }
+  ]
+}

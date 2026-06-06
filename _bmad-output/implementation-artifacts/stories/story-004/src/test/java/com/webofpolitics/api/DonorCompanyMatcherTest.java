@@ -1,5 +1,6 @@
 package com.webofpolitics.api;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class DonorCompanyMatcherTest {
     }
     
     @Nested
-    @DisplayName="SIC Code Categorization")
+    @DisplayName("SIC Code Categorization")
     class SicCodeCategorization {
         
         @Test

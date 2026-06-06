@@ -1,0 +1,9 @@
+com/webofpolitics/api/BatchCompanyImporterTest$PaginationLogic.class
+com/webofpolitics/api/BatchCompanyImporterTest$BatchProcessing.class
+com/webofpolitics/api/BatchCompanyImporterTest.class
+com/webofpolitics/api/DonorCompanyMatcherTest.class
+com/webofpolitics/api/CompaniesHouseApiClientTest$SicCodeExtraction.class
+com/webofpolitics/api/CompaniesHouseApiClientTest.class
+com/webofpolitics/api/DonorCompanyMatcherTest$CompanyNameMatching.class
+com/webofpolitics/api/CompaniesHouseApiClientTest$CompanyProfileFetching.class
+com/webofpolitics/api/DonorCompanyMatcherTest$SicCodeCategorization.class

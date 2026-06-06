@@ -3,32 +3,24 @@ package com.webofpolitics.api;
 import org.springframework.stereotype.Component;
 
 /**
- * Matches donor company information to politicians for donation data.
+ * Match donations to company profiles by donor name and SIC code categorization.
  */
 @Component
 public class DonorCompanyMatcher {
     
     /**
-     * Match donation to politician by donor name from Companies House.
+     * Match donation records to company nodes in Neo4j graph.
      */
-    public PoliticianData matchDonationToPolitician(String donorName, CompanyProfile company) {
-        // TODO: Implement matching logic
+    public void matchDonationsToNeo4jGraph(CompanyProfile profile) {
+        // TODO: Implement donor matching logic
         throw new UnsupportedOperationException("STORY-004: Not yet implemented");
     }
     
     /**
-     * Categorize company by SIC code industry.
+     * Categorize companies by industry using SIC codes.
      */
-    public String categorizeCompanyBySicCode(String sicCode) {
-        // TODO: Implement SIC code to industry mapping
+    public String getSicCategory(int sicCode) {
+        // TODO: Map SIC code to industry category
         throw new UnsupportedOperationException("STORY-004: Not yet implemented");
     }
-}
-
-// Helper class for matching
-class PoliticianData {
-    private String politicianId;
-    private String constituency;
-    
-    // Getters...
 }

@@ -8,14 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CompanyErrorHandling {
     
-    private static final int MAX_RETRIES = 3;
-    private static final long RETRY_DELAY_MS = 2000;
-    
     /**
-     * Execute API call with retry logic.
+     * Execute company API call with retry logic and exponential backoff.
      */
-    public <T> T executeWithRetry(java.util.function.Supplier<java.lang.String> operation) {
-        // TODO: Implement retry logic
+    public void executeWithRetry(CompanyApiCall apiCall, int maxRetries) {
+        // TODO: Implement retry logic with exponential backoff
         throw new UnsupportedOperationException("STORY-004: Not yet implemented");
     }
 }

@@ -1,46 +1,29 @@
 package com.webofpolitics.api;
 
 import org.springframework.stereotype.Component;
-import java.util.List;
 
 /**
- * Companies House API client for fetching company and donor data.
+ * Client for fetching company data from Companies House API.
  */
 @Component
 public class CompaniesHouseApiClient {
     
-    // TODO: Implement HTTP client initialization with authentication
-    
     /**
-     * Fetch a company profile from Companies House API.
+     * Fetch company profile from Companies House (via web interface or official API).
+     * 
+     * @param companyNumber Company registration number (e.g., "12345678")
+     * @return CompanyProfile with full company details
      */
     public CompanyProfile fetchCompanyProfile(String companyNumber) {
-        // TODO: Implement HTTP GET request to Companies House API
+        // TODO: Implement HTTP client for Companies House API
         throw new UnsupportedOperationException("STORY-004: Not yet implemented");
     }
     
     /**
-     * Search for companies by name pattern.
+     * Search companies by name.
      */
-    public List<CompanyProfile> searchCompaniesByName(String namePattern) {
-        // TODO: Implement search API call
+    public java.util.List<String> searchCompaniesByName(String companyName) {
+        // TODO: Implement company search
         throw new UnsupportedOperationException("STORY-004: Not yet implemented");
     }
-}
-
-// Helper DTO class
-class CompanyProfile {
-    private String companyNumber;
-    private String companyName;
-    private String sicCodes;
-    private java.time.Date incorporationDate;
-    private List<Address> addresses;
-    
-    // Getters...
-}
-
-class Address {
-    private String postalAddress;
-    
-    // Getters...
 }
