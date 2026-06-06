@@ -1,4 +1,5 @@
 package com.webofpolitics.api.integration;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 class BatchCompanyImportIntegrationTest {
     
     @Nested
-    @DisplayName="Multi-Company Processing")
+    @DisplayName(" Multi-Company Processing")
     class MultiCompanyProcessing {
         
         @Test
@@ -24,7 +25,7 @@ class BatchCompanyImportIntegrationTest {
     }
     
     @Nested
-    @DisplayName="Error Handling")
+    @DisplayName(" Error Handling")
     class ErrorHandling {
         
         @Test

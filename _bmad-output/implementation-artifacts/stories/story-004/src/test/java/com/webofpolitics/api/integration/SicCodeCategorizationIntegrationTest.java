@@ -1,4 +1,5 @@
 package com.webofpolitics.api.integration;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 class SicCodeCategorizationIntegrationTest {
     
     @Nested
-    @DisplayName="Industry Classification")
+    @DisplayName(" Industry Classification")
     class IndustryClassification {
         
         @Test
