@@ -1,25 +1,18 @@
 package com.webofpolitics.api;
 
-import java.util.List;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Paginates through Electoral Commission API donation responses.
+ * Pagination utilities for donation API responses.
  */
 @Component
 public class DonationResponsePaginator {
     
     /**
-     * Paginate donation results by politician.
+     * Paginate through large donation datasets.
      */
-    public <T> List<T> paginateDonations(String politicianId, int pageSize, int totalPages) {
+    public java.util.List<DonationRecord> paginate(DonationApiResponse response, int limit) {
         // TODO: Implement pagination logic
-        List<T> allResults = new ArrayList<>();
-        for (int page = 0; page < totalPages; page++) {
-            // TODO: Add page fetching and results accumulation
-        }
-        return allResults;
+        throw new UnsupportedOperationException("STORY-003: Not yet implemented");
     }
 }

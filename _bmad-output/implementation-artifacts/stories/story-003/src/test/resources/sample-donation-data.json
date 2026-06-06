@@ -1,0 +1,24 @@
+{
+  "donations": [
+    {
+      "donorName": "John Smith Ltd",
+      "politicianName": "Andrew Smith MP",
+      "donationDate": "2024-01-15",
+      "amount": 1000,
+      "method": "cash"
+    },
+    {
+      "donorName": "Manchester Healthcare Trust",
+      "politicianName": "Sarah Jones MP",
+      "donationDate": "2024-02-20",
+      "amount": 5000,
+      "method": "bank transfer"
+    }
+  ],
+  "disclosureDocuments": [
+    {
+      "donorName": "John Smith Ltd",
+      "documentType": "annual return"
+    }
+  ]
+}

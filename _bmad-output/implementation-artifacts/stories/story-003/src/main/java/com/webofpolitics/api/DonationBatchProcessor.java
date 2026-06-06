@@ -1,38 +1,18 @@
 package com.webofpolitics.api;
 
-import java.util.List;
 import org.springframework.stereotype.Component;
-import java.util.List;
 
 /**
- * Batch processes donation data from Electoral Commission API.
+ * Batch processor for donation data across multiple politicians.
  */
 @Component
 public class DonationBatchProcessor {
     
-    private final ElectoralCommissionApiClient apiClient;
-    private final DonationDataExtractor extractor;
-    
-    public DonationBatchProcessor(
-            ElectoralCommissionApiClient apiClient,
-            DonationDataExtractor extractor) {
-        this.apiClient = apiClient;
-        this.extractor = extractor;
-    }
-    
     /**
-     * Batch import donations for multiple politicians.
+     * Process donations for multiple politicians with rate limiting.
      */
-    public void batchImportDonations(List<String> politicianIds) {
-        // TODO: Implement batch processing with rate limit handling
-        throw new UnsupportedOperationException("STORY-003: Not yet implemented");
-    }
-    
-    /**
-     * Import donations by date range (e.g., last 5 years).
-     */
-    public void importDonationsByDateRange(String startDate, String endDate) {
-        // TODO: Implement date-filtered batch import
+    public void processDonationsForMultiplePoliticians(String[] politicianNames) {
+        // TODO: Implement batch donation processing
         throw new UnsupportedOperationException("STORY-003: Not yet implemented");
     }
 }
