@@ -9,10 +9,14 @@ import org.springframework.stereotype.Component;
 public class DonationErrorHandling {
     
     /**
-     * Implement exponential backoff for failed API calls.
+     * Execute donation API call with retry logic and exponential backoff.
+     * 
+     * @param apiCall The donation API operation to execute
+     * @param maxRetries Maximum number of retries for failed calls
      */
-    public void executeWithRetry(DonationApiCall call, int maxRetries) {
+    public void executeWithRetry(DonationApiCall apiCall, int maxRetries) {
         // TODO: Implement retry logic with exponential backoff
+        // For now, throws exception as stub implementation
         throw new UnsupportedOperationException("STORY-003: Not yet implemented");
     }
 }
