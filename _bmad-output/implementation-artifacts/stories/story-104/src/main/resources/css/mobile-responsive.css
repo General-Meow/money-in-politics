@@ -1,0 +1,320 @@
+/**
+ * STORY-104: Mobile Responsive Design - CSS Framework for EPIC-01 and EPIC-02 Components
+ */
+
+:root {
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-small: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-large: 1.25rem;
+  --text-color-primary: #333;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--text-color-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   EPIC-01: Graph Explorer Mobile Styles
+   ============================================ */
+.graph-container {
+  position: relative;
+  background: #f8f9fa;
+  padding: var(--border-radius-md);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .graph-container { padding: var(--font-size-base); }
+  
+  .graph-svg {
+    height: auto;
+    max-height: 50vh;
+  }
+}
+
+/* ============================================
+   PROFILE PAGE MOBILE STYLES
+   ============================================ */
+.profile-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--border-radius-md);
+}
+
+@media (max-width: 768px) {
+  .profile-header { padding: var(--font-size-base); }
+}
+
+/* Donors - grid to stack on mobile */
+.donor-list {
+  display: grid;
+  gap: var(--font-size-base);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .donor-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .donor-card { padding: var(--border-radius-md); }
+}
+
+/* ============================================
+   SEARCH RESULTS MOBILE
+   ============================================ */
+.search-results {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--border-radius-md);
+}
+
+@media (max-width: 768px) {
+  .search-results { padding: var(--font-size-base); }
+  
+  .search-result-item { display: block; width: 100%; }
+}
+
+/* ============================================
+   CARD COMPONENT - Mobile
+   ============================================ */
+.card {
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: var(--border-radius-md);
+}
+
+@media (max-width: 768px) {
+  .card { padding: var(--font-size-base); }
+  
+  .card-header { display: block; width: 100%; margin-bottom: var(--font-size-xs); }
+}
+
+/* ============================================
+   BUTTON COMPONENT - Mobile
+   ============================================ */
+.btn {
+  padding: var(--font-size-base) var(--border-radius-md);
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: var(--font-size-xs) var(--font-size-base);
+    font-size: var(--font-size-small);
+    width: 100%;
+  }
+}
+
+/* ============================================
+   LEGEND COMPONENT - Mobile
+   ============================================ */
+.legend {
+  margin-bottom: var(--border-radius-md);
+  padding: var(--font-size-base);
+  background: white;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  gap: var(--font-size-base);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .legend {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .filter-item {
+    display: flex;
+    align-items: center;
+    gap: var(--font-size-xs);
+    font-size: var(--font-size-small);
+  }
+}
+
+/* ============================================
+   PROFILE STATS - Mobile Grid
+   ============================================ */
+.profile-stats {
+  display: grid;
+  gap: var(--font-size-base);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+    gap: var(--font-size-xs);
+  }
+  
+  .stat-card { padding: var(--font-size-base); }
+}
+
+/* ============================================
+   TIMELINE COMPONENT - Mobile Vertical Stack
+   ============================================ */
+.donation-timeline {
+  display: flex;
+  gap: var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+  .donation-timeline {
+    flex-direction: column;
+  }
+  
+  .timeline-item { width: 100%; }
+}
+
+/* ============================================
+   EMPTY STATE - Mobile Centering
+   ============================================ */
+.empty-state {
+  text-align: center;
+  padding: var(--border-radius-md);
+}
+
+@media (max-width: 768px) {
+  .empty-state { padding: var(--font-size-base); }
+}
+
+/* ============================================
+   GRAPH LEGEND - Mobile Layout
+   ============================================ */
+.legend-title {
+  display: inline-block;
+  min-width: 80px;
+}
+
+@media (max-width: 768px) {
+  .legend-title { display: none; }
+}
+
+/* ============================================
+   GRAPH ZOOM CONTROLS - Mobile Layout
+   ============================================ */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--font-size-xs);
+  margin-top: var(--font-size-base);
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .zoom-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .zoom-btn { font-size: var(--font-size-base); }
+}
+
+/* ============================================
+   TOOLTIP - Mobile Touch-Friendly
+   ============================================ */
+.tooltip {
+  font-size: var(--font-size-small);
+  padding: var(--font-size-xs) var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+  .tooltip {
+    font-size: 0.75rem;
+    padding: var(--font-size-xs);
+  }
+}
+
+/* ============================================
+   RESPONSIVE IMAGES
+   ============================================ */
+.profile-photo-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .profile-photo-container img {
+    max-width: 250px;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING - Mobile Friendly
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+@media (max-width: 576px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* ============================================
+   TEXT ALIGNMENT - Center on Mobile
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+  }
+}
+
+/* ============================================
+   ERROR MESSAGE - Mobile Readability
+   ============================================ */
+.error-message {
+  padding: var(--font-size-base);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+  .error-message {
+    padding: var(--font-size-xs);
+    font-size: var(--font-size-small);
+  }
+}
+
+/* ============================================
+   NAVIGATION - Mobile Menu
+   ============================================ */
+.nav-menu {
+  display: flex;
+  gap: var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-wrap: wrap;
+  }
+  
+  .nav-item { font-size: var(--font-size-small); }
+}
+
