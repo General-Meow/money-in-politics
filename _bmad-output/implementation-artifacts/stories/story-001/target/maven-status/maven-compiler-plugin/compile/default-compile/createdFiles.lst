@@ -1,9 +1,0 @@
-com/webofpolitics/schema/Node.class
-com/webofpolitics/schema/Neo4jSchemaInitializer.class
-com/webofpolitics/schema/GraphIndexCreator.class
-com/webofpolitics/schema/CompanyData.class
-com/webofpolitics/schema/PoliticianNodeCreator.class
-com/webofpolitics/schema/CompanyNodeCreator.class
-com/webofpolitics/schema/PoliticianData.class
-com/webofpolitics/Story001Application.class
-com/webofpolitics/schema/RelationshipBuilder.class

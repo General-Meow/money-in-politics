@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="electoral-commission-api-study-003" />
+        <module name="parliament-api-study-002" />
+        <module name="historical-data-study-006" />
+        <module name="search-interface-study-101" />
+        <module name="graph-schema-study-001" />
+        <module name="web-scraping-study-005" />
+        <module name="companies-house-api-study-004" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="search-interface-study-101" options="" />
+    </option>
+  </component>
+</project>

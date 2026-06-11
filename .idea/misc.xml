@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-001/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-002/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-003/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-004/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-005/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-006/pom.xml" />
+        <option value="$PROJECT_DIR$/_bmad-output/implementation-artifacts/stories/story-101/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="26" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
