@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.1'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.webofpolitics'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Core Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.1'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.2.1'
+    
+    // Neo4j Driver and Spring Data Neo4j
+    implementation 'org.neo4j:neo4j-spring-graphql:5.18.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j:3.2.1'
+    implementation 'org.neo4j:neo4j-javascript-driver' // For JavaScript integration if needed
+    
+    // Jackson for DTOs and JSON processing
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+    
+    // Lombok to reduce boilerplate
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Layer-specific package organization for IDE import hints
+jar {
+    manifest {
+        attributes "Implementation-Title": "Web of Politics API"
+        attributes "Implementation-Version": version
+    }
+}
