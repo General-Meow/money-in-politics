@@ -1,0 +1,18 @@
+{
+  "name": "web-of-politics-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Web of Politics - React/D3.js Visualization Platform",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "d3": "^7.8.5",
+    "axios": "^1.6.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  }
+}
