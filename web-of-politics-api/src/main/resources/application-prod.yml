@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: web-of-politics-api
+  
+  # Production database configuration
+  datasource:
+    url: ${DB_URL:jdbc:neo4j://localhost:7687/db}
+    username: ${DB_USERNAME:neo4j}
+    password: ${DB_PASSWORD:***}
+    driver-class-name: org.neo4j.driver.v5.Driver
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+      idle-timeout: 300000
+      max-lifetime: 1800000
+  
+  # Redis cache for production
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:***}
+  
+  # JWT settings for production
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    min-response-size: 1024
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  health:
+    redis:
+      enabled: true
+    neo4j:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.webofpolitics: DEBUG
+    org.springframework.web: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  
+# Production error handling
+error:
+  include-message: always
+  include-binding-errors: never
+
+# Application shutdown behavior
+spring.lifecycle:
+  timeout: 120s
+  
+# Production-specific settings
+jwt:
+  secret: ${JWT_SECRET:**-CHANGE-ME-IN-PRODUCTION**}
+  expiration:
+    milliseconds: ${JWT_EXPIRATION_MS:3600000}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://your-production-domain.com}
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: Authorization,Content-Type,Accept,X-Requested-With
+  
+# Actuator monitoring
+spring-boot-autoconfigure:
+  exclude: org.springframework.boot.actuate.autoconfigure.health.RedisHealthIndicator
