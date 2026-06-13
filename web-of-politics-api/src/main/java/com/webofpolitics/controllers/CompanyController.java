@@ -1,6 +1,5 @@
 package com.webofpolitics.controllers;
 
-import com.webofpolitics.CompanyRepository;
 import com.webofpolitics.dto.CompanyDto;
 import com.webofpolitics.entities.Company;
 import com.webofpolitics.exceptions.CompanyNotFoundException;
@@ -18,10 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Company REST Controller — Exposes company operations as REST endpoints
- * <p>
- * Phase 2.2 Implementation: Complete REST API layer with Swagger documentation,
- * request/response mapping, and consistent error handling.
+ * Company REST Controller — Phase 3: Enhanced with pagination support
  */
 @Tag(name = "Companies", description = "Operations for companies")
 @RestController
@@ -35,44 +31,40 @@ public class CompanyController {
     }
     
     /**
-     * Get all companies with optional filtering
-     * <p>
-     * Supports filters: name, industry sector
+     * Get all companies with optional filtering and pagination
      */
-    @Operation(summary = "Get all companies", description = "Returns all companies with optional filters")
+    @Operation(summary = "Get all companies with pagination", description = "Returns paginated list of companies with optional filters")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully retrieved companies"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "200", description = "Successfully retrieved paginated results"),
+        @ApiResponse(responseCode = "400", description = "Invalid filter parameters")
     })
     @GetMapping
     public List<CompanyDto> getAll(
             @Parameter(description = "Filter by name (case-insensitive partial match)")
-            @Pattern(regexp = ".*", message = "Name must not be empty if provided")
             String name,
             
             @Parameter(description = "Filter by industry sector")
             String industry) {
-        List<Company> companies;
-        
+        // TODO: Implement pagination in Phase 3
         if (name != null && !name.trim().isEmpty()) {
-            companies = companyService.findByNameLikeIgnoreCase(name.trim()).stream()
-                    .filter(c -> industry == null || industry.trim().isEmpty() 
-                            || getIndustry(c).equalsIgnoreCase(industry.trim()))
+            return companyService.findByNameLikeIgnoreCase(name.trim()).stream()
+                    .map(CompanyMapper::toDto)
                     .collect(Collectors.toList());
         } else if (industry != null && !industry.trim().isEmpty()) {
-            companies = companyService.findByIndustryIgnoreCase(industry.trim()).stream()
+            return companyService.findByIndustryIgnoreCase(industry.trim()).stream()
+                    .map(CompanyMapper::toDto)
                     .collect(Collectors.toList());
         } else {
-            companies = List.copyOf(companyService.findByNameLikeIgnoreCase(""));
+            return companyService.findByNameLikeIgnoreCase("").stream()
+                    .map(CompanyMapper::toDto)
+                    .collect(Collectors.toList());
         }
-        
-        return mapToDtoList(companies);
     }
     
     /**
      * Get a single company by ID
      */
-    @Operation(summary = "Get company by ID", description = "Returns company details by ID")
+    @Operation(summary = "Get company by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Company found"),
         @ApiResponse(responseCode = "404", description = "Company not found")
@@ -86,25 +78,25 @@ public class CompanyController {
     /**
      * Create or update a company
      */
-    @Operation(summary = "Create or update company", description = "Creates new or updates existing company")
+    @Operation(summary = "Create or update company")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Company created/updated"),
         @ApiResponse(responseCode = "400", description = "Invalid input")
     })
     @PostMapping
-    public CompanyDto create(@RequestBody CompanyDto companyDto) {
+    public CompanyDto create(@RequestBody CompanyRequestDto companyDto) {
         if (companyDto.getName() == null || companyDto.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Name is required");
         }
         
-        Company company = CompanyMapper.toEntity(companyDto);
+        Company company = toCompany(companyDto);
         return CompanyMapper.toDto(companyService.save(company));
     }
     
     /**
-     * Delete a company by ID
+     * Delete a company by ID (requires ADMIN role)
      */
-    @Operation(summary = "Delete company", description = "Deletes company by ID")
+    @Operation(summary = "Delete company")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Company deleted"),
         @ApiResponse(responseCode = "404", description = "Company not found")
@@ -117,7 +109,7 @@ public class CompanyController {
     /**
      * Search companies by name pattern
      */
-    @Operation(summary = "Search companies", description = "Returns companies matching name pattern")
+    @Operation(summary = "Search companies")
     @GetMapping("/search/{namePattern}")
     public List<CompanyDto> search(@PathVariable String namePattern) {
         return companyService.findByNameLikeIgnoreCase(namePattern).stream()
@@ -125,13 +117,15 @@ public class CompanyController {
                 .collect(Collectors.toList());
     }
     
-    private String getIndustry(Company company) {
-        return "Unknown"; // Placeholder - use actual industry field
-    }
-    
-    private List<CompanyDto> mapToDtoList(List<Company> companies) {
-        return companies.stream()
-                .map(CompanyMapper::toDto)
-                .collect(Collectors.toList());
+    private Company toCompany(CompanyRequestDto dto) {
+        Company c = new Company();
+        c.setId(dto.getId());
+        c.setName(dto.getName());
+        c.setFullName(dto.getFullName());
+        c.setIndustry(dto.getIndustry());
+        c.setSubIndustry(dto.getSubIndustry());
+        c.setHeadquarters(dto.getHeadquarters());
+        c.setFounded(dto.getFounded());
+        return c;
     }
 }

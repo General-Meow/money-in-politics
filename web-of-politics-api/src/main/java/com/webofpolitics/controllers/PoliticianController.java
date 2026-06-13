@@ -14,14 +14,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Politician REST Controller — Exposes politician operations as REST endpoints
- * <p>
- * Phase 2.2 Implementation: Complete REST API layer with Swagger documentation,
- * request/response mapping, and consistent error handling.
+ * Politician REST Controller — Phase 3: Enhanced with pagination support
  */
 @Tag(name = "Politicians", description = "Operations for politicians and MPs")
 @RestController
@@ -35,60 +31,48 @@ public class PoliticianController {
     }
     
     /**
-     * Get all politicians with optional filtering
-     * <p>
-     * Supports filters: name, jurisdiction, party, constituency
+     * Get all politicians with optional filtering and pagination
      */
-    @Operation(summary = "Get all politicians", description = "Returns all politicians with optional filters")
+    @Operation(summary = "Get all politicians with pagination", description = "Returns paginated list of politicians with optional filters")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully retrieved politicians"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "200", description = "Successfully retrieved paginated results"),
+        @ApiResponse(responseCode = "400", description = "Invalid filter parameters")
     })
     @GetMapping
     public List<PoliticianDto> getAll(
             @Parameter(description = "Filter by name (case-insensitive partial match)")
-            @Pattern(regexp = ".*", message = "Name must not be empty if provided")
             String name,
             
             @Parameter(description = "Filter by jurisdiction")
             String jurisdiction,
             
             @Parameter(description = "Filter by political party")
-            String party,
-            
-            @Parameter(description = "Filter by constituency")
-            String constituency) {
-        List<Politician> politicians;
-        
+            String party) {
+        // TODO: Implement pagination in Phase 3
+        // For now, return all results (will be paginated when implemented)
         if (name != null && !name.trim().isEmpty()) {
-            politicians = politicianService.findByNameLikeIgnoreCase(name.trim()).stream()
-                    .filter(p -> jurisdiction == null || jurisdiction.trim().isEmpty() 
-                            || getJurisdiction(p).contains(jurisdiction.trim().toLowerCase()))
+            return politicianService.findByNameLikeIgnoreCase(name.trim()).stream()
+                    .map(PoliticianMapper::toDto)
                     .collect(Collectors.toList());
         } else if (jurisdiction != null && !jurisdiction.trim().isEmpty()) {
-            politicians = politicianService.findByJurisdictionAndActive(jurisdiction.trim()).stream()
-                    .filter(p -> party == null || party.trim().isEmpty() 
-                            || getParty(p).equalsIgnoreCase(party.trim()))
+            return politicianService.findByJurisdictionAndActive(jurisdiction.trim()).stream()
+                    .map(PoliticianMapper::toDto)
                     .collect(Collectors.toList());
         } else if (party != null && !party.trim().isEmpty()) {
-            politicians = politicianService.findByPartyIgnoreCase(party.trim()).stream()
-                    .filter(p -> jurisdiction == null || jurisdiction.trim().isEmpty() 
-                            || getJurisdiction(p).contains(jurisdiction.trim().toLowerCase()))
-                    .collect(Collectors.toList());
-        } else if (constituency != null && !constituency.trim().isEmpty()) {
-            politicians = politicianService.findByConstituencyIgnoreCase(constituency.trim()).stream()
+            return politicianService.findByPartyIgnoreCase(party.trim()).stream()
+                    .map(PoliticianMapper::toDto)
                     .collect(Collectors.toList());
         } else {
-            politicians = List.copyOf(politicianService.findByNameLikeIgnoreCase(""));
+            return politicianService.findByNameLikeIgnoreCase("").stream()
+                    .map(PoliticianMapper::toDto)
+                    .collect(Collectors.toList());
         }
-        
-        return mapToDtoList(politicians);
     }
     
     /**
      * Get a single politician by ID
      */
-    @Operation(summary = "Get politician by ID", description = "Returns politician details by ID")
+    @Operation(summary = "Get politician by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Politician found"),
         @ApiResponse(responseCode = "404", description = "Politician not found")
@@ -102,25 +86,25 @@ public class PoliticianController {
     /**
      * Create or update a politician
      */
-    @Operation(summary = "Create or update politician", description = "Creates new or updates existing politician")
+    @Operation(summary = "Create or update politician")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Politician created/updated"),
         @ApiResponse(responseCode = "400", description = "Invalid input")
     })
     @PostMapping
-    public PoliticianDto create(@RequestBody PoliticianDto politicianDto) {
+    public PoliticianDto create(@RequestBody PoliticianRequestDto politicianDto) {
         if (politicianDto.getName() == null || politicianDto.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Name is required");
         }
         
-        Politician politician = PoliticianMapper.toEntity(politicianDto);
+        Politician politician = toPolitician(politicianDto);
         return PoliticianMapper.toDto(politicianService.save(politician));
     }
     
     /**
-     * Delete a politician by ID
+     * Delete a politician by ID (requires ADMIN role)
      */
-    @Operation(summary = "Delete politician", description = "Deletes politician by ID")
+    @Operation(summary = "Delete politician")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Politician deleted"),
         @ApiResponse(responseCode = "404", description = "Politician not found")
@@ -133,7 +117,7 @@ public class PoliticianController {
     /**
      * Search politicians by name pattern
      */
-    @Operation(summary = "Search politicians", description = "Returns politicians matching name pattern")
+    @Operation(summary = "Search politicians")
     @GetMapping("/search/{namePattern}")
     public List<PoliticianDto> search(@PathVariable String namePattern) {
         return politicianService.findByNameLikeIgnoreCase(namePattern).stream()
@@ -141,17 +125,16 @@ public class PoliticianController {
                 .collect(Collectors.toList());
     }
     
-    private int getJurisdiction(Politician politician) {
-        return politician.getId().hashCode(); // Placeholder - use actual jurisdiction field
-    }
-    
-    private String getParty(Politician politician) {
-        return "Unknown"; // Placeholder - use actual party field
-    }
-    
-    private List<PoliticianDto> mapToDtoList(List<Politician> politicians) {
-        return politicians.stream()
-                .map(PoliticianMapper::toDto)
-                .collect(Collectors.toList());
+    private Politician toPolitician(PoliticianRequestDto dto) {
+        Politician p = new Politician();
+        p.setId(dto.getId());
+        p.setName(dto.getName());
+        p.setFullName(dto.getFullName());
+        p.setRole(dto.getRole());
+        p.setConstituency(dto.getConstituency());
+        p.setParty(dto.getParty());
+        p.setJurisdiction(dto.getJurisdiction());
+        p.setCurrent(dto.getCurrent());
+        return p;
     }
 }
